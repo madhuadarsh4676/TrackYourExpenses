@@ -23,16 +23,16 @@
 # COPY . .
 
 # RUN npm run dev
-# FROM node:latest AS build-stage
+FROM node:latest AS build-stage
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY package*.json ./
-# RUN npm install --force
+COPY package*.json ./
+RUN npm install --force
 
-# EXPOSE 5173  
+EXPOSE 5173  
 
-# CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "dev" ]
 
 
 # Start a new stage for serving the built React app
