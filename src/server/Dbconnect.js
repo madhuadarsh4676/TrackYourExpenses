@@ -277,7 +277,7 @@
 import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
-import autoIncrement from "mongoose-auto-increment";
+// import autoIncrement from "mongoose-auto-increment";
 
 const app = express();
 
@@ -308,7 +308,7 @@ const connection = mongoose.createConnection(
 );
 
 // Initialize auto-increment
-autoIncrement.initialize(connection);
+// autoIncrement.initialize(connection);
 
 // Define schemas and models
 

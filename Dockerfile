@@ -12,23 +12,28 @@
 
 # CMD ["npm", "run", "dev"] 
 
-# Use official Node.js image as the base image
-FROM node:latest AS builder
+# FROM node:latest AS builder
 
-# Set the working directory in the container
+# WORKDIR /app
+
+# COPY package*.json ./
+
+# RUN npm install --force
+
+# COPY . .
+
+# RUN npm run dev
+FROM node:latest AS build-stage
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the container
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install --force
 
-# Copy the rest of the application files to the container
-COPY . .
+EXPOSE 5173  
 
-# Build the React app
-RUN npm run dev
+CMD [ "npm", "run", "dev" ]
+
 
 # Start a new stage for serving the built React app
 # FROM nginx:alpine
